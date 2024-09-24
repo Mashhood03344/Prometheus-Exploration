@@ -65,23 +65,33 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 Prometheus  architecture is built with several key components that work together to collect, store, and process metrics (data) from various systems. Let’s break down each component in simple terms:
 
 1. **Prometheus Server**:
+
 **What it does:** This is the heart of the Prometheus architecture. It scrapes (collects) metrics from different targets (like servers, applications, or databases) at regular intervals.
+
 **How it works:** The Prometheus server periodically pulls data from these targets and stores it in its own time-series database. It also provides a way to query the stored data using a language called PromQL.
 
 2. **Service Discovery:**
+
 **What it does:** Instead of manually telling Prometheus where all the targets (servers, apps) are, service discovery helps Prometheus automatically find them.
+
 **How it works:** It can integrate with systems like Kubernetes, AWS, or static configurations to automatically discover new services or instances that should be monitored.
 
 3. **Pushgateway:**
+
 **What it does:** Prometheus usually pulls (scrapes) data from targets, but some jobs (like short-lived batch jobs) don't run long enough to be scraped. This is where the Pushgateway comes in.
+
 **How it works:** These jobs push their metrics to the Pushgateway, which then holds on to the data so Prometheus can scrape it later.
 
 4. **Prometheus Web UI:**
+
 **What it does:** This is a simple web interface that comes with Prometheus.
+
 **How it works:** Through the UI, you can visualize the collected metrics, run queries using PromQL, and get an overview of the current state of your targets.
 
 5. **Alertmanager:**
+
 **What it does:** While Prometheus can detect issues (like high CPU usage), the Alertmanager handles what happens after a problem is detected. It manages alerts (notifications) and can group, silence, or route them to different destinations (e.g., Slack, email).
+
 **How it works:** Prometheus server sends alerts to the Alertmanager based on rules you set. The Alertmanager then decides how to notify you based on your configuration.
 
 6. **Exporters:**
@@ -90,7 +100,9 @@ Prometheus  architecture is built with several key components that work together
 **How they work:** For example, the Node Exporter collects metrics from Linux systems (like CPU and memory usage) and makes it available for Prometheus to scrape.
 
 7. **Time-series Database:**
+
 **What it does:** This is part of the Prometheus server where all the metrics are stored.
+
 **How it works:** Each metric is stored with a timestamp, and Prometheus can store huge amounts of time-stamped data. You can query this historical data later to analyze trends.
 
 
@@ -165,11 +177,11 @@ A good engineer knows that it’s not just about using good tools—it’s also 
 
 Here are some examples where you’ll benefit from using another tool. Note that even when another tool is a better fit for a use case, you can still use Prometheus alongside it because it's often the right tool for monitoring a service. Here are the things for which it is not intended:
 
-Long-term data storage:
+### Long-term data storage:
 
 Prometheus isn’t intended for durable long-term storage. You can use an observability platform or another storage source for long-term storage. For instance, New Relic provides extended storage for up to 13 months for dimensional metrics.
 
-When you need 100% accuracy:
+### When you need 100% accuracy:
 
 Prometheus prioritizes reliability over accuracy. According to the CAP theorem, you can only have two of three in a distributed system: consistency (accuracy), availability (reliability), and partition tolerance (data collected on separate servers). Since distributed systems always need partition tolerance, there is a tradeoff between reliability and accuracy. While the tradeoff is fairly small, when you need 100% accuracy (such as with a billing system), you’ll need to use another system.
 
