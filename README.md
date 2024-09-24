@@ -4,27 +4,30 @@
 ## Table of Contents
 
 1. [Prometheus](#prometheus)
-2. [Prometheus Features](#prometheus-features)
-3. [Prometheus Components](#prometheus-components)
-4. [Prometheus Architecture](#prometheus-architecture)
-5. [How Prometheus Works](#how-prometheus-works)
-6. [What Can You Monitor with Prometheus?](#what-can-you-monitor-with-prometheus)
+2. [Introduction](#Introduction)
+3. [Prometheus Features](#prometheus-features)
+4. [Prometheus Components](#prometheus-components)
+5. [Prometheus Architecture](#prometheus-architecture)
+6. [How Prometheus Works](#how-prometheus-works)
+7. [What Can You Monitor with Prometheus?](#what-can-you-monitor-with-prometheus)
 	- [Service Metrics](#service-metrics)
 	- [Host Metrics](#host-metrics)
 	- [Website Uptime/Up Status](#website-uptimeup-status)
 	- [Cronjobs](#cronjobs)
-7. [Prometheus Metric Types](#prometheus-metric-types)
+8. [Prometheus Metric Types](#prometheus-metric-types)
 	- [Counter](#counter)
 	- [Gauge](#gauge)
 	- [Histogram](#histogram)
 	- [Summary](#summary)
-8. [What Are the Use Cases of Prometheus?](#what-are-the-use-cases-of-prometheus)
-9. [When Not to Use Prometheus?](#when-not-to-use-prometheus)
-10. [Best Practices for Prometheus Monitoring](#best-practices-for-prometheus-monitoring)
+9. [What Are the Use Cases of Prometheus?](#what-are-the-use-cases-of-prometheus)
+10. [When Not to Use Prometheus?](#when-not-to-use-prometheus)
+11. [Best Practices for Prometheus Monitoring](#best-practices-for-prometheus-monitoring)
 	- [Choose the Best Exporter](#choose-the-best-exporter)
 	- [Label Carefully](#label-carefully)
 	- [Set Actionable Alerts](#Set-Actionable-Alerts)
-11. [References](#References)
+12. [References](#References)
+
+## Introduction
 
 Monitoring and Observability are crucial for maintaining the health, performance, and availability of modern, complex systems. These systems often consist of multiple components, services, and infrastructure layers, and it can be challenging to understand the interactions between these components and identify the root cause of problems when they occur.
 Prometheus is an open-source tool that’s meant to monitor and collect metrics from applications. Prometheus provides a unified solution for collecting and storing metrics and generating alerts, which makes it easier to monitor and understand complex systems. The point of this system is to make it easy for users to see and understand important metrics that let them know how well an application is doing. In fact, Prometheus is able to collect over one million metrics per second, and then store them until you’re ready to retrieve them. Additionally, Prometheus’ query language and Grafana integration make it possible to visualize and analyze metrics over time, which helps to identify trends and patterns that may indicate potential issues.
