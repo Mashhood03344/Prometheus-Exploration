@@ -54,7 +54,10 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 
 ## Prometheus Architecture
 
+
 ![architecture](images/prometheus-Architecture.png)
+
+
 
 Prometheus  architecture is built with several key components that work together to collect, store, and process metrics (data) from various systems. Let’s break down each component in simple terms:
 
