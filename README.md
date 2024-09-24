@@ -97,6 +97,7 @@ Prometheus  architecture is built with several key components that work together
 6. **Exporters:**
 
 **What they do:** Most systems (like databases or applications) don’t speak Prometheus' language natively. Exporters act as translators, converting the system's data into a format that Prometheus understands.
+
 **How they work:** For example, the Node Exporter collects metrics from Linux systems (like CPU and memory usage) and makes it available for Prometheus to scrape.
 
 7. **Time-series Database:**
