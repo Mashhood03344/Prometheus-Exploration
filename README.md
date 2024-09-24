@@ -9,25 +9,26 @@
 4. [Prometheus Architecture](#prometheus-architecture)
 5. [How Prometheus Works](#how-prometheus-works)
 6. [What Can You Monitor with Prometheus?](#what-can-you-monitor-with-prometheus)
-  - [Service Metrics](#service-metrics)
-  - [Host Metrics](#host-metrics)
-  - [Website Uptime/Up Status](#website-uptimeup-status)
-  - [Cronjobs](#cronjobs)
+	- [Service Metrics](#service-metrics)
+	- [Host Metrics](#host-metrics)
+	- [Website Uptime/Up Status](#website-uptimeup-status)
+	- [Cronjobs](#cronjobs)
 7. [Prometheus Metric Types](#prometheus-metric-types)
-  - [Counter](#counter)
-  - [Gauge](#gauge)
-  - [Histogram](#histogram)
-  - [Summary](#summary)
+	- [Counter](#counter)
+	- [Gauge](#gauge)
+	- [Histogram](#histogram)
+	- [Summary](#summary)
 8. [What Are the Use Cases of Prometheus?](#what-are-the-use-cases-of-prometheus)
 9. [When Not to Use Prometheus?](#when-not-to-use-prometheus)
 10. [Best Practices for Prometheus Monitoring](#best-practices-for-prometheus-monitoring)
-  - [Choose the Best Exporter](#choose-the-best-exporter)
-  - [Label Carefully](#label-carefully)
-  - [Set Actionable Alerts](#Set-Actionable-Alerts)
+	- [Choose the Best Exporter](#choose-the-best-exporter)
+	- [Label Carefully](#label-carefully)
+	- [Set Actionable Alerts](#Set-Actionable-Alerts)
 11. [References](#References)
 
 Monitoring and Observability are crucial for maintaining the health, performance, and availability of modern, complex systems. These systems often consist of multiple components, services, and infrastructure layers, and it can be challenging to understand the interactions between these components and identify the root cause of problems when they occur.
 Prometheus is an open-source tool that’s meant to monitor and collect metrics from applications. Prometheus provides a unified solution for collecting and storing metrics and generating alerts, which makes it easier to monitor and understand complex systems. The point of this system is to make it easy for users to see and understand important metrics that let them know how well an application is doing. In fact, Prometheus is able to collect over one million metrics per second, and then store them until you’re ready to retrieve them. Additionally, Prometheus’ query language and Grafana integration make it possible to visualize and analyze metrics over time, which helps to identify trends and patterns that may indicate potential issues.
+
 
 ## Prometheus Features
 
@@ -38,6 +39,7 @@ Prometheus is an open-source tool that’s meant to monitor and collect metrics 
 - pushing time series is supported via an intermediary gateway, also supports metrics collection from short-lived jobs
 - targets are discovered via service discovery or static configuration
 - Visualization - smultiple modes of graphing and dashboarding support.
+
 
 ## Prometheus Components
 
@@ -52,7 +54,7 @@ The Prometheus ecosystem consists of multiple components, many of which are opti
 
 ## Prometheus Architecture
 
-![architecture](images/prometheus Architecture.png)
+![architecture](images/prometheus-Architecture.png)
 
 Prometheus  architecture is built with several key components that work together to collect, store, and process metrics (data) from various systems. Let’s break down each component in simple terms:
 
@@ -85,6 +87,7 @@ Prometheus  architecture is built with several key components that work together
 **What it does:** This is part of the Prometheus server where all the metrics are stored.
 **How it works:** Each metric is stored with a timestamp, and Prometheus can store huge amounts of time-stamped data. You can query this historical data later to analyze trends.
 
+
 ## How Prometheus Works 
 
 Prometheus gets a metric from an exposed HTTP endpoint. A number of client libraries are available to provide this application integration when building software. With an available endpoint, Prometheus can scrape numerical data and store it as a time series in a local time-series database. It can also integrate with remote storage options.s
@@ -92,6 +95,7 @@ In addition to the stored time series, impermanent times series from the source 
 
 **Example:**
 Imagine you have a web application. Prometheus can monitor its CPU, memory, and response times by scraping an exporter. If response times exceed a threshold, an alert is triggered, and the Alertmanager sends you a Slack notification. You can check the Prometheus Web UI to see the metrics in real-time or investigate historical data to understand the issue.
+
 
 ## What Can You Monitor with Prometheus?
 
@@ -116,6 +120,7 @@ Prometheus doesn’t usually monitor website status, but you can use a blackbox 
 To check if a cronjob is running at the specified intervals, you can use the Push Gateway to display metrics to Prometheus through an HTTP endpoint. You can push the timestamp of the last successful job (i.e. a backup job) to the Gateway, and compare it with the current time in Prometheus. If the time exceeds the specified threshold, the monitor times out and triggers an alert.
 
 
+
 ## Prometheus Metric Types
 
 The client libraries of Prometheus offer four core types of metrics. However, the Prometheus server does not currently save these metrics as different data types. Instead, it flattens all information into an untyped time series.
@@ -138,6 +143,7 @@ A histogram samples observations, such as request durations or response sizes. I
 A summary can sample observations, such as request durations and response sizes. Additionally, it can provide a total count of the observations as well as a total sum of all observed values. It can calculate configurable quantiles over a sliding time window.
 
 
+
 ## What Are the Use Cases of Prometheus?
 
 Prometheus is known for being among the top monitoring software options for applications. This is partly because it’s versatile, easy to use, and integrates perfectly with several popular programs. As such, there are several use cases that have worked well for anyone wanting to monitor their application.
@@ -145,6 +151,7 @@ One of the most popular use cases is gathering numeric metrics from a service th
 Another use case for Prometheus involves monitoring the operating system. You’ll want to know when a server’s hard disk is full or when a CPU is always running at 100%. Memory usage, website uptime, and the number of HTTP requests for each page are some other metrics that users commonly track so they can make improvements as needed.
 Prometheus’s primary focus is on reliability rather than accuracy. For this reason, it is ideal in highly dynamic systems such as microservices running in a cloud environment. It is probably not a good fit for a system that requires high accuracy, such as a billing application. In this case, the specific billing function should be addressed with an alternative, but Prometheus may still be the right tool for monitoring the other application and infrastructure functions.
 Prometheus is designed for reliability, to be the system you go to during an outage to allow you to quickly diagnose problems. Each Prometheus server is standalone with local time series database storage not depending on network storage or other remote services. You can rely on it when other parts of your infrastructure are broken, and you do not need to setup extensive infrastructure to us it.
+
 
 ## When not to use Prometheus?
 
@@ -177,6 +184,7 @@ Consult the documentation of your chosen exporter and learn how to label your me
 ### Set Actionable Alerts
 
 A well-defined alerting strategy can help you achieve effective performance monitoring. You should first determine which events or metrics are critical to monitor, and then set a reasonable threshold that can catch issues before they can affect your end-users. Ideally, you should define a threshold that does not cause alert fatigue. You should also ensure the notifications are properly configured to reach the appropriate team in a timely manner.
+
 
 
 ### References
