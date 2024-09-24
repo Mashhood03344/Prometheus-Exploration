@@ -109,7 +109,7 @@ Prometheus  architecture is built with several key components that work together
 
 ## How Prometheus Works 
 
-Prometheus gets a metric from an exposed HTTP endpoint. A number of client libraries are available to provide this application integration when building software. With an available endpoint, Prometheus can scrape numerical data and store it as a time series in a local time-series database. It can also integrate with remote storage options.s
+Prometheus gets a metric from an exposed HTTP endpoint. A number of client libraries are available to provide this application integration when building software. With an available endpoint, Prometheus can scrape numerical data and store it as a time series in a local time-series database. It can also integrate with remote storage options.
 In addition to the stored time series, impermanent times series from the source are produced by queries. These series are recognized by metric name and key-value pairs known by labels. Queries are generated using PromQL (Prometheus Query Language) that enables users to choose and aggregate time-series data in real-time. PromQL is also used to establish alert conditions that can then transmit notifications outside sources such as PagerDuty, Slack or email.  These data can be displayed in graph or tabular form in Prometheus’s Web UI. Alternatively, and commonly, API integrations with alternative display solutions such as Grafana may be used.
 
 **Example:**
